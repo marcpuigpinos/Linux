@@ -1,0 +1,15 @@
++ Instal·lar Alacritty:
+    - https://github.com/alacritty/alacritty
+    - https://github.com/alacritty/alacritty-theme
++ Instal·lar zsh
++ Instal·lar Oh-my-zsh: 
+    - https://ohmyz.sh/
+    - Temes: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
++ Instal·lar zsh-autosuggestions: https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
++ Instal·lar targeta gràfica NVIDIA:
+    - https://rpmfusion.org/Configuration
+        º Descarregar RPM Fusion free i RPM Fusion nonfree.
+        º sudo dnf install akmod-nvidia
+        º sudo dnf install xorg-x11-drv-nvidia-cuda
+        º sudo reboot
+        º Aquesta comanda executa el panell d'Nvidia.
