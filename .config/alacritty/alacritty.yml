@@ -1,0 +1,26 @@
+window:
+  padding:
+    x: 5
+    y: 5
+  class:
+    instance: Alacritty
+    general: Alacritty
+  opacity: 0.95
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+selection:
+  save_to_clipboard: false
+
+live_config_reload: true
+
+shell:
+  program: /usr/bin/zsh
+
+key_bindings:
+  - { key: Return, mods: Super|Shift, action: SpawnNewInstance }
+
+import:
+ - ~/.config/alacritty/themes/themes/moonlight_ii_vscode.yaml
