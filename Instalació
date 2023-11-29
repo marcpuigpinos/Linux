@@ -13,3 +13,4 @@
         º sudo dnf install xorg-x11-drv-nvidia-cuda
         º sudo reboot
         º Aquesta comanda executa el panell d'Nvidia.
++ tmux: https://www.redhat.com/sysadmin/introduction-tmux-linux
