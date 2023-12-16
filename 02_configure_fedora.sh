@@ -1,5 +1,14 @@
 #!/bin/echo
 #
+curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+mkdir fonts
+cd fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Hack.zip
+cd ..
+mkdir ~/.local/share/fonts
+cp fonts/* ~/.local/share/fonts
+rm -rf fonts
+
 # Installing rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
