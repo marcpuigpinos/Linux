@@ -1,12 +1,13 @@
 #!/bin/echo
 #
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
-mkdir fonts
+mkdir -p fonts
 cd fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Hack.zip
+mkdir -p ~/.local/share/fonts
+cp fonts/Hack.zip ~/.local/share/fonts
+unzip ~/.local/share/fonts/Hack.zip
 cd ..
-mkdir ~/.local/share/fonts
-cp fonts/* ~/.local/share/fonts
 rm -rf fonts
 
 # Installing rust
@@ -22,12 +23,10 @@ echo 'eval "$(oh-my-posh init bash --config ~/.cache/oh-my-posh/themes/slim.omp.
 echo 'bind TAB:menu-complete' >> ~/.bashrc
 
 # download the configuration files from git.
-mkdir configuration_from_git
-cd configuration_from_git
-git clone https://github.com/marcpuigpinos/Linux.git
 cp .vimrc ~/.vimrc
-cp -r i3 ~/.config/i3
-cp -r i3status ~/.config/i3status
+mkdir -p ~/.config/i3
+mkdir -p ~/.config/i3status
+mkdir -p ~/.config/lvim
+cp -r i3/config ~/.config/i3/config
+cp -r i3status/config ~/.config/i3status/config
 cp -r lvim ~/.config/lvim
-cd ..
-rm -rf configuration_from_git
