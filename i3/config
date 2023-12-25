@@ -42,6 +42,12 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# Brightness
+# bindsym XF86MonBrightnessUp exec brightnessctl s +5% > /dev/null && notify-send Brightness $(($(brightnessctl get) * 10 / 937 * 10))% -h string:x-canonical-private-synchronous:brightness_percentage --app-name System
+# bindsym XF86MonBrightnessDown exec brightnessctl s 5%- > /dev/null && notify-send Brightness $(($(brightnessctl get) * 10 / 937 * 10))% -h string:x-canonical-private-synchronous:brightness_percentage --app-name System
+
+
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
