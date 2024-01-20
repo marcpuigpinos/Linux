@@ -20,4 +20,4 @@ dnf install nodejs -y
 dnf install blueman -y
 dnf install polybar -y
 dnf install fzf -y
-dnf install xclipboard -y
+dnf install xclip -y
