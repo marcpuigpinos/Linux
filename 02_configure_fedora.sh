@@ -31,3 +31,9 @@ cp -r i3/config ~/.config/i3/config
 cp -r i3status/config ~/.config/i3status/config
 cp -r lvim ~/.config/lvim
 chmod +x ~/.config/i3/volume_control.sh
+cp -r polybar ~/.config/polybar
+cp -r rofi-wifi-menu ~/.config/rofi-wifi-menu
+cp -r polybar-bluetooth ~/.config/polybar-bluetooth
+chmod +x ~/.config/rofi-wifi-menu/rofi-wifi-menu.sh
+chmod +x ~/.config/polybar-bluetooth/bluetooth.sh
+chmod +x ~/.config/polybar-bluetooth/toggle_bluetooth.sh
