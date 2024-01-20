@@ -41,3 +41,4 @@ chmod +x ~/.config/polybar-bluetooth/toggle_bluetooth.sh
 chmod +x ~/.config/polybar/launch.sh
 cp -r picom.conf ~/.config/
 cp -r fish ~/.config/
+echo 'exec fish' >> ~/.bashrc
