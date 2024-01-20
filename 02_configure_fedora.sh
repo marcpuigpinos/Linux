@@ -39,3 +39,5 @@ chmod +x ~/.config/rofi-wifi-menu/rofi-wifi-menu.sh
 chmod +x ~/.config/polybar-bluetooth/bluetooth.sh
 chmod +x ~/.config/polybar-bluetooth/toggle_bluetooth.sh
 chmod +x ~/.config/polybar/launch.sh
+cp -r picom.conf ~/.config/
+cp -r fish ~/.config/
