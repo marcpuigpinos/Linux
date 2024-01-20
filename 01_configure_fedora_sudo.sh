@@ -21,3 +21,5 @@ dnf install blueman -y
 dnf install polybar -y
 dnf install fzf -y
 dnf install xclip -y
+dnf install picom -y
+dnf install fish -y
