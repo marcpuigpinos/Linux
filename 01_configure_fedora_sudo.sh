@@ -17,3 +17,4 @@ dnf check-update -y
 dnf install code -y
 dnf install neovim -y
 dnf install nodejs -y
+dnf install blueman -y
