@@ -5,13 +5,14 @@ mkdir -p fonts
 cd fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Hack.zip
 mkdir -p ~/.local/share/fonts
-cp fonts/Hack.zip ~/.local/share/fonts
+cp Hack.zip ~/.local/share/fonts
 unzip ~/.local/share/fonts/Hack.zip
 cd ..
 rm -rf fonts
 
 # Installing rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source ~/.bashrc
 
 # Installing lunar vim
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
