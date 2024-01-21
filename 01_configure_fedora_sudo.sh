@@ -5,9 +5,9 @@ dnf groupinstall "Herramientas de desarrollo" -y && dnf groupinstall "Herramient
 dnf install vim -y
 dnf install python-pip -y
 dnf install gfortran -y
-#dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
-#dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
-#dnf update -y
+dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
+dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+dnf update -y
 #dnf install akmod-nvidia -y 
 #dnf install xorg-x11-drv-nvidia-cuda -y 
 dnf install ffmpeg --allowerasing -y
