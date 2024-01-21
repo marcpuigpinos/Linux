@@ -222,4 +222,8 @@ default_floating_border pixel 1
 
 # Gaps
 gaps inner 10
-gaps outer 0
+#gaps outer 0
+gaps left 0
+gaps right 0
+gaps top -5
+gaps bottom 0
