@@ -23,3 +23,4 @@ dnf install fzf -y
 dnf install xclip -y
 dnf install picom -y
 dnf install fish -y
+dnf install terminology -y
