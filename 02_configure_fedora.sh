@@ -1,12 +1,13 @@
 #!/bin/echo
 #
+mkdir -p ~/.local/bin
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
 mkdir -p fonts
 cd fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Hack.zip
 mkdir -p ~/.local/share/fonts
-cp Hack.zip ~/.local/share/fonts
-unzip ~/.local/share/fonts/Hack.zip
+unzip Hack.zip
+cp * ~/.local/share/fonts
 cd ..
 rm -rf fonts
 
