@@ -29,6 +29,7 @@ mkdir -p ~/.config/i3
 mkdir -p ~/.config/i3status
 mkdir -p ~/.config/lvim
 cp -r i3/config ~/.config/i3/config
+cp -r i3/volume_control.sh ~/.config/i3/volume_control.sh
 cp -r i3status/config ~/.config/i3status/config
 cp -r lvim ~/.config/lvim
 chmod +x ~/.config/i3/volume_control.sh
