@@ -25,3 +25,4 @@ dnf install xclip -y
 dnf install picom -y
 dnf install fish -y
 dnf install terminology -y
+dnf install feh -y
