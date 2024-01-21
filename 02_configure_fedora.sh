@@ -46,3 +46,4 @@ cp -r fish ~/.config/
 echo 'fish' >> ~/.bashrc
 mkdir -p ~/.config/gtk-3.0
 cp gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
+mv Wallpapers ~/Imágenes
