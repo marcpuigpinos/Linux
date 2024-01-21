@@ -214,6 +214,9 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
 client.background       #F8F8F2
 
+# Background
+exec --no-startup-id feh --bg-scale ~/Imágenes/Wallpapers/harry_potter_01.jpg
+
 # Use polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
