@@ -69,8 +69,8 @@ elif [ "$1" == "--castellano" ]; then
 fi
 
 echo "  + Installing developing tools..."
-sudo dnf groupinstall "$devtools" -y 2>&1 >>"$file" && dnf groupinstall "$devtoolsc" -y 2>&1 >>"$file"
-sudo dnf install python-pip gfortran neovim nodejs clangd clangd-devel -y 2>&1 >>"$file"
+sudo dnf groupinstall "$devtools" -y 2>&1 >>"$file" && sudo dnf groupinstall "$devtoolsc" -y 2>&1 >>"$file"
+sudo dnf install python3-pip gfortran neovim nodejs clang clang-devel -y 2>&1 >>"$file"
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 sudo dnf check-update -y 2>&1 >>"$file" && sudo dnf install code -y 2>&1 >>"$file"
@@ -78,15 +78,18 @@ pip install fpm fortls pyright 2>&1 >>"$file"
 
 newline
 
-#echo "  + Installing Graphic card driver..."
-#
-#sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y 2>&1 >> "$file"
-#sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y 2>&1 >> "$file"
-#sudo dnf update -y 2>&1 >> "$file"
-#sudo dnf install akmod-nvidia -y 2>&1 >> "$file"
-#sudo dnf install xorg-x11-drv-nvidia-cuda -y 2>&1 >> "$file"
+echo "	+ Adding rpmfusion repositories..."
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y 2>&1 >> "$file"
+sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y 2>&1 >> "$file"
+sudo dnf update -y 2>&1 >> "$file"
 
 newline
+
+#echo "  + Installing Graphic card driver..."
+#
+#sudo dnf install akmod-nvidia -y 2>&1 >> "$file"
+#sudo dnf install xorg-x11-drv-nvidia-cuda -y 2>&1 >> "$file"
+#newline
 
 echo "  + Installing other tools..."
 sudo dnf install ffmpeg --allowerasing -y 2>&1 >>"$file"
@@ -107,8 +110,8 @@ rm -rf ~/.config/nvim/.git 2>&1 >>"$file"
 
 # Wallpaper
 cp -r Wallpapers "$images" 2>&1 >>"$file"
-mkdir -p "~/.config" 2>&1 >>"$file"
-mkdir -p "~/.local/share" 2>&1 >>"$file"
+mkdir -p ~/.config 2>&1 >>"$file"
+mkdir -p ~/.local/share 2>&1 >>"$file"
 cp -r .config/* ~/.config/ 2>&1 >>"$file"
 cp -r .bashrc ~/ 2>&1 >>"$file"
 cp -r .local/share/* ~/.local/share/nvim/ 2>&1 >>"$file"
