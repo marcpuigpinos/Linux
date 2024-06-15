@@ -191,7 +191,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Navigator
-bindsym $mod+n exec firefox
+bindsym $mod+n exec firejail firefox
 
 # Visual studio code
 bindsym $mod+c exec code

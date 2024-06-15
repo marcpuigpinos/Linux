@@ -1,29 +1,16 @@
-# Linux
-
-Linux scripts, configurations and useful information.
-
-## Fedora I3wm spin
+# Fedora I3wm spin. Configuration 1
 
 ### Customization
 
 This works for **SPANISH** installation of **Fedora I3wm** spin.
-Give execution permission to both scripts.
 
+Give execution permissions to the isntallation script:
 ```console
-chmod +x 01_configure_fedora_sudo.sh
-chmod +x 02_configure_fedora.sh
+chmod +x installation.sh
 ```
-
-Execute first script as superuser.
-
+Install (your password might be asked more than one time):
 ```console
-sudo ./01_configure_fedora_sudo.sh
-```
-
-Execute second script (not as superuser).
-
-```console
-sh 02_configure_fedora.sh
+./install.sh
 ```
 
 ### I3wm shortcuts
@@ -33,7 +20,7 @@ Main personal shortcuts:
 - Mod key: win
 - Open VS Code: $mod + c
 - Open Firefox: $mod + n
-- Open Terminology: $mod + enter
+- Open Alacritty Terminal: $mod + enter
 - Open Rofi: $mod + d
 - Open Rofi-Wiffi: $mod + x
 

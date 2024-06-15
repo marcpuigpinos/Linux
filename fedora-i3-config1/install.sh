@@ -83,9 +83,6 @@ else
 fi
 sudo dnf install ffmpeg --allowerasing -y
 sudo dnf install rofi -y
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-sudo dnf check-update -y
 sudo dnf install neovim -y
 sudo dnf install nodejs -y
 npm install tree-sitter-cli
@@ -105,6 +102,12 @@ sudo dnf install picom -y
 sudo dnf install fish -y
 sudo dnf install alacritty -y
 sudo dnf install feh -y
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+dnf check-update -y
+sudo dnf install code -y# or code-insiders
+sudo dnf install firejail -y
+sudo dnf install gnome-screenshot
 
 mkdir -p ~/.local/bin
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
