@@ -10,6 +10,7 @@ install_nvidia() {
 # Function to install AMD drivers
 install_amd() {
     # Add commands to install AMD drivers here
+    echo "Not implemented yet"
 }
 
 # Function to display the help message
@@ -66,8 +67,8 @@ else
 fi
 
 echo "You might be asked for password more than one time..."
-sudo dnf update -y && dnf upgrade -y
-sudo dnf groupinstall "Herramientas de desarrollo" -y && dnf groupinstall "Herramientas y Librerías de Desarrollo en C" -y
+sudo dnf update -y && sudo dnf upgrade -y
+sudo dnf groupinstall "Development Tools" -y && sudo dnf groupinstall "C Development Tools and Libraries" -y
 sudo dnf install python-pip -y
 sudo dnf install gfortran -y
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
@@ -79,21 +80,20 @@ elif [[ "$GRAPHIC_CARD" == "amd" ]]; then
     install_amd
 elif [[ -z "$GRAPHIC_CARD" ]]; then
     echo "No graphic card drivers will be installed."
-else
 fi
 sudo dnf install ffmpeg --allowerasing -y
 sudo dnf install rofi -y
 sudo dnf install neovim -y
 sudo dnf install nodejs -y
 npm install tree-sitter-cli
-sudo dnf install ripgrep
+sudo dnf install ripgrep -y
 sudo dnf copr enable atim/lazygit -y
-sudo dnf install lazygit
+sudo dnf install lazygit -y
 curl -L https://github.com/dundee/gdu/releases/latest/download/gdu_linux_amd64.tgz | tar xz
 chmod +x gdu_linux_amd64
 sudo mv gdu_linux_amd64 /usr/bin/gdu
 sudo dnf copr enable atim/bottom -y
-sudo dnf install bottom
+sudo dnf install bottom -y
 sudo dnf install blueman -y
 sudo dnf install polybar -y
 sudo dnf install fzf -y
@@ -104,10 +104,10 @@ sudo dnf install alacritty -y
 sudo dnf install feh -y
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
-dnf check-update -y
-sudo dnf install code -y# or code-insiders
+sudo dnf check-update -y
+sudo dnf install code -y
 sudo dnf install firejail -y
-sudo dnf install gnome-screenshot
+sudo dnf install gnome-screenshot -y
 
 mkdir -p ~/.local/bin
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
@@ -143,7 +143,7 @@ cp -r picom.conf ~/.config/
 cp -r fish ~/.config/
 mkdir -p ~/.config/gtk-3.0
 cp gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
-mv Wallpapers ~/Imágenes
+mv Wallpapers ~/Pictures/
 git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
