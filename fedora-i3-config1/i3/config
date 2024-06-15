@@ -52,8 +52,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec terminology
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -224,10 +224,17 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 default_border pixel 1
 default_floating_border pixel 1
 
-# Gaps
-gaps inner 10
-#gaps outer 0
+## Gaps
+#gaps inner 10
+##gaps outer 0
+#gaps left 0
+#gaps right 0
+#gaps top -10
+#gaps bottom 0
+
+gaps inner 15
+gaps outer 0
 gaps left 0
 gaps right 0
-gaps top -10
+gaps top 0
 gaps bottom 0
