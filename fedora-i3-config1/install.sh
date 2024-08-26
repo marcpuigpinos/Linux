@@ -107,14 +107,17 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 sudo dnf check-update -y
 sudo dnf install code -y
 sudo dnf install firejail -y
+sudo dnf install chromium -y
 sudo dnf install gnome-screenshot -y
 
 mkdir -p ~/.local/bin
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
 mkdir -p fonts
 cd fonts
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/ComicShannsMono.zip
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Hack.zip
 mkdir -p ~/.local/share/fonts
+unzip ComicShannsMono.zip
 unzip Hack.zip
 cp * ~/.local/share/fonts
 cd ..
