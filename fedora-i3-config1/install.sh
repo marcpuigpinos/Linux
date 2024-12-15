@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Function to install Nvidia drivers
@@ -83,7 +84,8 @@ elif [[ -z "$GRAPHIC_CARD" ]]; then
 fi
 sudo dnf install ffmpeg --allowerasing -y
 sudo dnf install rofi -y
-sudo dnf install neovim -y
+# sudo dnf install neovim -y
+sudo dnf install vim -y
 sudo dnf install nodejs -y
 npm install tree-sitter-cli
 sudo dnf install ripgrep -y
@@ -107,7 +109,6 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 sudo dnf check-update -y
 sudo dnf install code -y
 sudo dnf install firejail -y
-sudo dnf install chromium -y
 sudo dnf install gnome-screenshot -y
 
 mkdir -p ~/.local/bin
@@ -147,13 +148,15 @@ cp -r fish ~/.config/
 mkdir -p ~/.config/gtk-3.0
 cp gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
 mv Wallpapers ~/Pictures/
-git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
-rm -rf ~/.config/nvim/.git
+# git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
+# rm -rf ~/.config/nvim/.git
+# 
+# echo "vim.opt.tabstop = 4" >> ~/.config/nvim/init.lua
+# echo "vim.opt.softtabstop = 4" >> ~/.config/nvim/init.lua
+# echo "vim.opt.shiftwidth = 4" >> ~/.config/nvim/init.lua 
+# echo "vim.opt.expandtab = True" >> ~/.config/nvim/init.lua 
+# echo "vim.opt.shell = \"/bin/fish\"" >>  ~/.config/nvim/init.lua
 
-echo "vim.opt.tabstop = 4" >> ~/.config/nvim/init.lua
-echo "vim.opt.softtabstop = 4" >> ~/.config/nvim/init.lua
-echo "vim.opt.shiftwidth = 4" >> ~/.config/nvim/init.lua 
-echo "vim.opt.expandtab = True" >> ~/.config/nvim/init.lua 
-echo "vim.opt.shell = \"/bin/fish\"" >>  ~/.config/nvim/init.lua 
+cp .vimrc ~/.vimrc
 
 echo "Installation finished!"
