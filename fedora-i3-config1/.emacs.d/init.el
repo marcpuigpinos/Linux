@@ -67,6 +67,16 @@
 ;; FORTRAN:
 ;; Enable eglot mode for Fortran files
 (add-hook 'fortran-mode-hook 'eglot-ensure)
+(setq indent-tabs-mode nil)  ;; Use spaces instead of tabs
+(setq f90-indent-level 4)     ;; Set indentation level to 4
+(setq f90-continuation-indent 4)  ;; Set continuation line indentation
+(setq f90-do-indetn 4)
+(setq f90-if-indent 4)
+(setq f90-structure-indent 4)
+(setq f90-type-indent 4)
+(setq f90-program-indent 4)
+(setq f90-associate-indent 4)
+(setq f90-critical-indent 4)
 
 ;; Optional: Set the path to fortls if it's not in your PATH
 (setq eglot-server-programs '((fortran-mode . ("fortls"))))
