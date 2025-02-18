@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Function to install Nvidia drivers
@@ -86,11 +85,11 @@ sudo dnf install ffmpeg --allowerasing -y
 sudo dnf install rofi -y
 # sudo dnf install neovim -y
 sudo dnf install vim -y
-sudo dnf install nodejs -y
-npm install tree-sitter-cli
-sudo dnf install ripgrep -y
-sudo dnf copr enable atim/lazygit -y
-sudo dnf install lazygit -y
+#sudo dnf install nodejs -y
+#npm install tree-sitter-cli
+#sudo dnf install ripgrep -y
+#sudo dnf copr enable atim/lazygit -y
+#sudo dnf install lazygit -y
 curl -L https://github.com/dundee/gdu/releases/latest/download/gdu_linux_amd64.tgz | tar xz
 chmod +x gdu_linux_amd64
 sudo mv gdu_linux_amd64 /usr/bin/gdu
@@ -101,7 +100,7 @@ sudo dnf install polybar -y
 sudo dnf install fzf -y
 sudo dnf install xclip -y
 sudo dnf install picom -y
-sudo dnf install fish -y
+#sudo dnf install fish -y
 sudo dnf install alacritty -y
 sudo dnf install feh -y
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -110,6 +109,7 @@ sudo dnf check-update -y
 sudo dnf install code -y
 sudo dnf install firejail -y
 sudo dnf install gnome-screenshot -y
+sudo dnf install emacs -y
 
 mkdir -p ~/.local/bin
 curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
@@ -144,7 +144,7 @@ chmod +x ~/.config/polybar-bluetooth/bluetooth.sh
 chmod +x ~/.config/polybar-bluetooth/toggle_bluetooth.sh
 chmod +x ~/.config/polybar/launch.sh
 cp -r picom.conf ~/.config/
-cp -r fish ~/.config/
+#cp -r fish ~/.config/
 mkdir -p ~/.config/gtk-3.0
 cp gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
 mv Wallpapers ~/Pictures/
@@ -158,5 +158,6 @@ mv Wallpapers ~/Pictures/
 # echo "vim.opt.shell = \"/bin/fish\"" >>  ~/.config/nvim/init.lua
 
 cp .vimrc ~/.vimrc
+cp -r .emacs.d ~/.emacs.d
 
 echo "Installation finished!"
