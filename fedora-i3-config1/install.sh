@@ -100,7 +100,7 @@ sudo dnf install polybar -y
 sudo dnf install fzf -y
 sudo dnf install xclip -y
 sudo dnf install picom -y
-#sudo dnf install fish -y
+sudo dnf install fish -y
 sudo dnf install alacritty -y
 sudo dnf install feh -y
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -144,7 +144,7 @@ chmod +x ~/.config/polybar-bluetooth/bluetooth.sh
 chmod +x ~/.config/polybar-bluetooth/toggle_bluetooth.sh
 chmod +x ~/.config/polybar/launch.sh
 cp -r picom.conf ~/.config/
-#cp -r fish ~/.config/
+cp -r fish ~/.config/
 mkdir -p ~/.config/gtk-3.0
 cp gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
 mv Wallpapers ~/Pictures/
