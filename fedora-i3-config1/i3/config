@@ -193,7 +193,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Notebook, editor: emacs
-bindsym $mod+n exec emacs
+bindsym $mod+n exec emacs-gtk+x11
 
 # Navigator
 #bindsym $mod+shift+n exec firejail firefox
