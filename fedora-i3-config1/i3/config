@@ -192,11 +192,16 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Notebook, editor: emacs
+bindsym $mod+n exec emacs
+
 # Navigator
-bindsym $mod+n exec firejail firefox
+#bindsym $mod+shift+n exec firejail firefox
+bindsym $mod+shift+n exec firefox
 
 # Visual studio code
-bindsym $mod+c exec firejail code
+#bindsym $mod+c exec firejail code
+bindsym $mod+c exec code
 
 # class                 border  bground text    indicator child_border
 # client.focused          #83CAFA #51A2DA #FFFFFF #83CAFA   #51A2DA
