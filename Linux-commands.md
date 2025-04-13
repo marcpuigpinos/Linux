@@ -72,5 +72,3 @@
 | `wc` | Prints newline, word, and byte counts for a given input. |
 | `chmod` | Changes permission of a file or directory. |
 | `chown` | Changes the owner and group of a file or directory. |
-| `grip` | Markdown renderer. |
-| `frogmouth` | Terminal Markdown renderer. |
