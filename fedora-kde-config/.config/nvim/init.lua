@@ -80,7 +80,7 @@ lspconfig.pyright.setup {
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
                 diagnosticMode = "workspace", -- or "openFilesOnly"
-                typeCheckingMode = "strict",   -- or "basic", "strict", "off"
+                typeCheckingMode = "basic",   -- or "basic", "strict", "off"
             }
         }
     },
@@ -151,3 +151,7 @@ vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE", fg = "#ffffff" })          -- com
 vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#3e3e3e", fg = "#ffffff" })       -- selected item
 vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#2e2e2e" })                      -- scrollbar
 vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#5e5e5e" })                     -- scrollbar thumb
+
+-- Remap keys
+vim.keymap.set('n', '<Esc><Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('t', '<Esc><Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
