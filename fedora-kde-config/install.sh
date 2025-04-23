@@ -108,8 +108,25 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/mast
 
 # Copy configuration files
 cp .bashrc ~/.bashrc
-mkdir -p ~/.config/nvim
-cp .config/nvim/* ~/.config/nvim
+
+# Lazyvim installation
+mv ~/.config/nvim{,.bak}
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+
+# Lazyvim custom config
+echo -- Set colorscheme (make sure 'vim' colorscheme is available or change it) >> ~/.config/nvim
+echo vim.cmd("colorscheme vim") >> ~/.config/nvim
+echo - Fix nvim-cmp popup colors >> ~/.config/nvim
+echo -- vim.api.nvim_set_hl(0, "Pmenu", { bg = "#1e1e1e", fg = "#ffffff" }) -- completion menu >> ~/.config/nvim
+echo vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE", fg = "#ffffff" }) -- completion menu >> ~/.config/nvim
+echo vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#3e3e3e", fg = "#ffffff" }) -- selected item >> ~/.config/nvim
+echo vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#2e2e2e" }) -- scrollbar >> ~/.config/nvim
+echo vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#5e5e5e" }) -- scrollbar thumb >> ~/.config/nvim
+
 
 echo "Installation finished!"
 
