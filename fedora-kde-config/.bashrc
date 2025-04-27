@@ -82,7 +82,7 @@ OMB_USE_SUDO=true
 # OMB_PROMPT_SHOW_PYTHON_VENV=false # disable
 
 # To enable/disable Spack environment information
-# OMB_PROMPT_SHOW_SPACK_ENV=true  # enable
+OMB_PROMPT_SHOW_SPACK_ENV=true  # enable
 # OMB_PROMPT_SHOW_SPACK_ENV=false # disable
 
 # Which completions would you like to load? (completions can be found in ~/.oh-my-bash/completions/*)
@@ -110,6 +110,9 @@ aliases=(
 plugins=(
   git
   bashmarks
+  brew
+  colored-man-pages
+  pyenv
 )
 
 # Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -156,8 +159,10 @@ source "$OSH"/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 
-# Custom functions
+# Add to path
+# export PATH="$HOME/.local/bin:$PATH"
 
+# Custom functions
 ls() {
   command ls -lsha --color=always "$@" | bat
 }
