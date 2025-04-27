@@ -70,6 +70,10 @@ echo "You might be asked for password more than one time..."
 sudo dnf update -y && sudo dnf upgrade -y && sudo dnf clean all -y
 sudo dnf install gcc -y
 sudo dnf install g++ -y
+sudo dnf install cmake -y
+sudo dnf install git -y
+sudo dnf install bat -y
+sudo dnf install xclip -y
 sudo dnf install python-pip -y
 sudo dnf install gfortran -y
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
@@ -87,8 +91,6 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo >/dev/null
 sudo dnf check-update -y
 sudo dnf install code -y
-sudo dnf install git -y
-sudo dnf install cmake -y
 sudo dnf install paraview -y
 sudo dnf install texlive -y
 
@@ -118,15 +120,10 @@ git clone https://github.com/LazyVim/starter ~/.config/nvim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 
 # Lazyvim custom config
-echo -- Set colorscheme (make sure 'vim' colorscheme is available or change it) >> ~/.config/nvim
-echo vim.cmd("colorscheme vim") >> ~/.config/nvim
-echo - Fix nvim-cmp popup colors >> ~/.config/nvim
-echo -- vim.api.nvim_set_hl(0, "Pmenu", { bg = "#1e1e1e", fg = "#ffffff" }) -- completion menu >> ~/.config/nvim
-echo vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE", fg = "#ffffff" }) -- completion menu >> ~/.config/nvim
-echo vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#3e3e3e", fg = "#ffffff" }) -- selected item >> ~/.config/nvim
-echo vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#2e2e2e" }) -- scrollbar >> ~/.config/nvim
-echo vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#5e5e5e" }) -- scrollbar thumb >> ~/.config/nvim
+cp custom.lua ~/.config/nvim/lua/config/custom.lua
+cp init.lua ~/.config/nvim/init.lua
 
+source .bashrc
 
 echo "Installation finished!"
 
