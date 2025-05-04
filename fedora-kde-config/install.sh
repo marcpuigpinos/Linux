@@ -107,8 +107,10 @@ cp * ~/.local/share/fonts
 cd ..
 rm -rf fonts
 
+cp .alacritty.toml ~/.alacritty.toml
+
 # Install Oh-my-bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+( bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" )
 
 # Copy configuration files
 cp .bashrc ~/.bashrc
