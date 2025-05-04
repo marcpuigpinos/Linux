@@ -93,6 +93,8 @@ sudo dnf check-update -y
 sudo dnf install code -y
 sudo dnf install paraview -y
 sudo dnf install texlive -y
+sudo dnf install fzf -y
+sudo dnf install 
 
 mkdir -p fonts
 cd fonts
@@ -111,17 +113,17 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/mast
 # Copy configuration files
 cp .bashrc ~/.bashrc
 
-# Lazyvim installation
-mv ~/.config/nvim{,.bak}
-mv ~/.local/share/nvim{,.bak}
-mv ~/.local/state/nvim{,.bak}
-mv ~/.cache/nvim{,.bak}
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-
-# Lazyvim custom config
-cp custom.lua ~/.config/nvim/lua/config/custom.lua
-cp init.lua ~/.config/nvim/init.lua
+## Lazyvim installation
+#mv ~/.config/nvim{,.bak}
+#mv ~/.local/share/nvim{,.bak}
+#mv ~/.local/state/nvim{,.bak}
+#mv ~/.cache/nvim{,.bak}
+#git clone https://github.com/LazyVim/starter ~/.config/nvim
+#git clone https://github.com/LazyVim/starter ~/.config/nvim
+#
+## Lazyvim custom config
+#cp custom.lua ~/.config/nvim/lua/config/custom.lua
+#cp init.lua ~/.config/nvim/init.lua
 
 source .bashrc
 
