@@ -94,7 +94,7 @@ sudo dnf install code -y
 sudo dnf install paraview -y
 sudo dnf install texlive -y
 sudo dnf install fzf -y
-sudo dnf install 
+sudo dnf install
 
 mkdir -p fonts
 cd fonts
@@ -110,22 +110,22 @@ rm -rf fonts
 cp .alacritty.toml ~/.alacritty.toml
 
 # Install Oh-my-bash
-( bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" )
+(bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)")
 
 # Copy configuration files
 cp .bashrc ~/.bashrc
 
-## Lazyvim installation
-#mv ~/.config/nvim{,.bak}
-#mv ~/.local/share/nvim{,.bak}
-#mv ~/.local/state/nvim{,.bak}
-#mv ~/.cache/nvim{,.bak}
-#git clone https://github.com/LazyVim/starter ~/.config/nvim
-#git clone https://github.com/LazyVim/starter ~/.config/nvim
-#
-## Lazyvim custom config
-#cp custom.lua ~/.config/nvim/lua/config/custom.lua
-#cp init.lua ~/.config/nvim/init.lua
+# Lazyvim installation
+mv ~/.config/nvim{,.bak}
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+
+# Lazyvim custom config
+cp custom.lua ~/.config/nvim/lua/config/custom.lua
+cp init.lua ~/.config/nvim/init.lua
 
 source .bashrc
 
