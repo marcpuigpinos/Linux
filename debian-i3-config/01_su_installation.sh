@@ -3,7 +3,7 @@
 echo "Installing debian"
 
 apt update -y
-apt install build-essential git cmake meson xorg xdm i3 dmenu pulseaudio pavucontrol firefox-esr emacs network-manager texlive pandoc bat fzf paraview libreoffice alacritty thunar xclip 7zip network-manager-gnome htop blueman -y
+apt install build-essential git cmake meson network-manager texlive pandoc bat fzf paraview libreoffice  network-manager-gnome htop blueman -y
 
 # Check if /bin/python3 exists and /bin/python does not
 if [ -f /bin/python3 ] && [ ! -e /bin/python ]; then
@@ -22,7 +22,7 @@ fi
 # Check if /bin/batcat exists and /bin/bat does not
 if [ -f /bin/batcat ] && [ ! -e /bin/bat ]; then
     echo "Creating symbolic link: /bin/bat -> /bin/batcat"
-    ln -s /bin/python3 /bin/python
+    ln -s /bin/batcat /bin/bat
 else
     echo "No action taken."
     if [ ! -f /bin/batcat ]; then
@@ -32,6 +32,3 @@ else
         echo "/bin/bat already exists."
     fi
 fi
-
-echo "Installing Oh-my-bash
-bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"

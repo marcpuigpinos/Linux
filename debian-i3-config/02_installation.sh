@@ -1,7 +1,2 @@
 #!/bin/bash
-
-echo "Copying configurations..."
-cp .bashrc ~/.bashrc
-cp -r .config ~/.config
-cp -r .emacs.d ~/.emacs.d
-echo "Finished task"
+bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
