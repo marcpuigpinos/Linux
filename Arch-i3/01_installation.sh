@@ -14,7 +14,6 @@ sudo pacman -Sy xclip --noconfirm
 sudo pacman -Sy git --noconfirm
 sudo pacman -Sy bat --noconfirm
 sudo pacman -Sy fzf --noconfirm
-sudo pacman -Sy p7zip --noconfirm
 sudo pacman -Sy emacs --noconfirm 
 sudo pacman -Sy gcc-fortran --noconfirm 
 sudo pacman -Sy python-pip --noconfirm 
@@ -27,6 +26,8 @@ sudo pacman -Sy bluez-utils --noconfirm
 sudo pacman -Sy cmake --noconfirm
 sudo pacman -Sy meson --noconfirm
 sudo pacman -Sy feh --noconfirm
+sudo pacman -Sy os-prober --noconfirm
+sudo pacman -Sy grub --noconfirm
 
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
