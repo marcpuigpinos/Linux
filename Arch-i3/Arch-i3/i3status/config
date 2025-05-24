@@ -1,0 +1,77 @@
+general {
+    output_format = "i3bar"
+	colors = true
+	color_good = "#a3be8c"
+	color_degraded = "#ebcb8b"
+	color_bad = "#bf616a"
+	interval = 30
+ 	separator = "|"
+
+}
+
+order += "cpu_usage"
+order += "disk /"
+order += "memory"
+order += "ethernet enp12s0"
+order += "wireless wlan0"
+order += "battery all"
+order += "volume master"
+order += "tztime local"
+order += "tztime berlin"
+
+cpu_usage {
+	format = %usage
+	degraded_threshold = 90
+	max_threshold = 95
+}
+
+wireless wlan0 {
+        format_up = "W: (%quality at %essid, %bitrate) %ip"
+        format_down = "W: down"
+}
+
+ethernet enp12s0 {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+battery all {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "󰂈 CHR"
+        status_bat = "󱊢 BAT"
+        status_unk = "? UNK"
+        status_full = "󱊣 FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+        last_full_capacity = true
+}
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+        hide_if_equals_localtime = true
+}
+
+tztime berlin {
+        format = "%Y-%m-%d %H:%M:%S %Z"
+        timezone = "Europe/Berlin"
+}
+
+memory {
+        format = "%used/%total"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
+
+disk "/" {
+        format = "%free/%total"
+}
+
