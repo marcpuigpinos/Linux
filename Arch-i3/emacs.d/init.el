@@ -72,9 +72,17 @@
 (add-hook 'prog-mode-hook #'eldoc-box-hover-mode)
 (global-set-key (kbd "C-S-d") 'eldoc-print-current-symbol-info) ;; Set ctrl + shift + D to print current symbol information
 
+;; Add paths to exed-path.
+(add-to-list 'exec-path (expand-file-name "~/.local/bin")) ;; Path of pip installations
+
+;; Inherit shell enviroments
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
 ;; LSP ----
 ;; C
-
 (add-hook 'c-mode-hook 'eglot-ensure) ;; Ensure eglot is open
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
@@ -90,9 +98,6 @@
             (setq c-basic-offset 4          ;; Set indentation to 4 spaces
                   tab-width 4               ;; Set tab width to 4 spaces
                   indent-tabs-mode nil)))   ;; Use spaces, not tabs
-
-;; Autocompletion
-;;(define-key c-mode-map (kbd "TAB") #'completion-at-point)
 
 ;; C++
 (add-hook 'c++-mode-hook 'eglot-ensure) ;; Ensure eglot is open
@@ -111,8 +116,40 @@
                   tab-width 4               ;; Set tab width to 4 spaces
                   indent-tabs-mode nil)))   ;; Use spaces, not tabs
 
-;; Autocompletion
-;;(define-key c++-mode-map (kbd "TAB") #'completion-at-point)
+
+;; Fortran
+(add-hook 'f90-mode-hook 'eglot-ensure) ;; Ensure eglot is started in Fortran files
+
+;; Add fortls to eglot server programs
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(f90-mode . ("~/.local/bin/fortls" 
+                                 "--hover_signature"
+                                 "--use_signature_help"
+                                 "--autocomplete_no_prefix"
+                                 "--enable_code_actions"))))
+
+
+(add-hook 'f90-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil   ;; Use spaces, not tabs
+                  tab-width 4            ;; Tab width = 4 spaces
+                  f90-indent 4)))        ;; Indent 4 spaces per level
+
+
+(defun my/fortran-format-buffer-with-fprettify ()
+  "Format the current buffer with fprettify if it's a Fortran file."
+  (when (and (eq major-mode 'f90-mode)
+             (executable-find "fprettify"))
+    (let ((current-point (point)))
+      (call-process-region (point-min) (point-max)
+                           "fprettify" t (current-buffer) t)
+      (goto-char current-point))))
+
+(add-hook 'f90-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'my/fortran-format-buffer-with-fprettify nil t)))
+
 
 ;; Automatically format the buffer before saving if eglot is active
 (add-hook 'before-save-hook #'eglot-format-buffer)
