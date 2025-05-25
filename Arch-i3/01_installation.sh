@@ -28,7 +28,8 @@ sudo pacman -Sy meson --noconfirm
 sudo pacman -Sy feh --noconfirm
 sudo pacman -Sy os-prober --noconfirm
 sudo pacman -Sy grub --noconfirm
+sudo pacman -Sy clang --noconfirm
+sudo pacman -Sy man-db --noconfig
 
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
-

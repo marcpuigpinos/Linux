@@ -14,3 +14,6 @@ fi
 cp bashrc ~/.bashrc
 cp alacritty.toml ~/.alacritty.toml
 cp clang-format ~/.clang-format
+pip install fortls --break-system-packages
+pip install fpm --break-system-packages
+pip install ford --break-system-packages
