@@ -117,6 +117,23 @@
                   indent-tabs-mode nil)))   ;; Use spaces, not tabs
 
 
+;; Python
+;; Ensure eglot is loaded for Python
+(add-hook 'python-mode-hook 'eglot-ensure)
+
+;; Add pyright as the language server for Python
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("pyright-langserver" "--stdio"))))
+
+;; Ensure 4-space indentation for Python
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq python-indent-offset 4
+                  tab-width 4
+                  indent-tabs-mode nil)))
+
+
 ;; Fortran
 (add-hook 'f90-mode-hook 'eglot-ensure) ;; Ensure eglot is started in Fortran files
 
