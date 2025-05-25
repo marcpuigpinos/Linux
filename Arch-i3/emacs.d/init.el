@@ -15,6 +15,12 @@
 (unless (package-installed-p 'eglot)
   (package-install 'eglot))
 
+;; Install eldoc if it's not already installed
+(unless (package-installed-p 'eldoc)
+  (package-install 'eldoc))
+(unless (package-installed-p 'eldoc-box)
+  (package-install 'eldoc-box))
+
 ;; Install gruber-darker if it is not already installed
 (unless (package-installed-p 'gruber-darker-theme)
   (package-install 'gruber-darker-theme))
@@ -22,6 +28,19 @@
 ;; Install multiple-cursors if it is not already installed
 (unless (package-installed-p 'multiple-cursors)
   (package-install 'multiple-cursors))
+
+;; Install corfu for suggestions and autocompletion
+(unless (package-installed-p 'corfu)
+  (package-install 'corfu))
+(use-package corfu
+  :ensure t
+  :custom
+  (corfu-cycle t)                ;; Enable cycling for `tab`
+  (corfu-auto t)                 ;; Enable auto completion
+  (corfu-auto-delay 0.2)         ;; Delay before suggestions
+  (corfu-auto-prefix 1)          ;; Start completing after 1 character
+  :init
+  (global-corfu-mode))
 
 (setq inhibit-startup-message t)
 ;(menu-bar-mode 0)
@@ -46,8 +65,12 @@
 
 ;; ElDoc
 (global-eldoc-mode 1) ;; Activate eldoc mode
+;; Require and enable eldoc-box
+(require 'eldoc-box)
+(eldoc-box-hover-mode 1) ;; Activate eldoc hover mode
+;; Optionally enable eldoc-box in all programming modes
+(add-hook 'prog-mode-hook #'eldoc-box-hover-mode)
 (global-set-key (kbd "C-S-d") 'eldoc-print-current-symbol-info) ;; Set ctrl + shift + D to print current symbol information
-
 
 ;; LSP ----
 ;; C
@@ -68,6 +91,9 @@
                   tab-width 4               ;; Set tab width to 4 spaces
                   indent-tabs-mode nil)))   ;; Use spaces, not tabs
 
+;; Autocompletion
+;;(define-key c-mode-map (kbd "TAB") #'completion-at-point)
+
 ;; C++
 (add-hook 'c++-mode-hook 'eglot-ensure) ;; Ensure eglot is open
 (with-eval-after-load 'eglot
@@ -85,6 +111,8 @@
                   tab-width 4               ;; Set tab width to 4 spaces
                   indent-tabs-mode nil)))   ;; Use spaces, not tabs
 
+;; Autocompletion
+;;(define-key c++-mode-map (kbd "TAB") #'completion-at-point)
 
 ;; Automatically format the buffer before saving if eglot is active
 (add-hook 'before-save-hook #'eglot-format-buffer)
