@@ -1,36 +1,76 @@
 #!/bin/bash
+set -euo pipefail
+LOGFILE="$HOME/arch-setup.log"
+exec > >(tee -a "$LOGFILE") 2>&1
 
-sudo pacman -Sy --noconfirm
-sudo pacman -Syu --noconfirm 
-sudo pacman -Rns $(pacman -Qdtq) --noconfirm
-sudo pacman -Sy xorg-xrandr --noconfirm
-sudo pacman -Sy arandr --noconfirm
-sudo pacman -Sy brightnessctl --noconfirm
-sudo pacman -Sy base-devel --noconfirm
-sudo pacman -Sy pavucontrol --noconfirm
-sudo pacman -Sy gvfs --noconfirm
-sudo pacman -Sy thunar --noconfirm
-sudo pacman -Sy xclip --noconfirm
-sudo pacman -Sy git --noconfirm
-sudo pacman -Sy bat --noconfirm
-sudo pacman -Sy fzf --noconfirm
-sudo pacman -Sy emacs --noconfirm 
-sudo pacman -Sy gcc-fortran --noconfirm 
-sudo pacman -Sy python-pip --noconfirm 
-sudo pacman -Sy alacritty --noconfirm 
-sudo pacman -Sy texlive-most --noconfirm 
-sudo pacman -Sy htop --noconfirm 
-sudo pacman -Sy blueman --noconfirm
-sudo pacman -Sy bluez --noconfirm
-sudo pacman -Sy bluez-utils --noconfirm
-sudo pacman -Sy cmake --noconfirm
-sudo pacman -Sy meson --noconfirm
-sudo pacman -Sy feh --noconfirm
-sudo pacman -Sy os-prober --noconfirm
-sudo pacman -Sy grub --noconfirm
-sudo pacman -Sy clang --noconfirm
-sudo pacman -Sy man-db --nocnfirm
-sudo pacman -Sy xdg-user-dirs --noconfirm
+# COLORS
+GREEN='\033[1;32m'
+RED='\033[1;31m'
+NC='\033[0m'
 
-sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
+# Helper Functions
+print_info() {
+    echo -e "${GREEN}==> $1${NC}"
+}
+
+print_error() {
+    echo -e "${RED}Error: $1${NC}" >&2
+}
+
+check_internet() {
+    print_info "Checking internet connectivity..."
+    if ! ping -c 1 archlinux.org &>/dev/null; then
+        print_error "No internet connection."
+        exit 1
+    fi
+}
+
+check_sudo() {
+    if [[ $EUID -ne 0 ]]; then
+        print_error "Please run this script with sudo or as root."
+        exit 1
+    fi
+}
+
+# MAIN SETUP
+main() {
+    check_internet
+    check_sudo
+
+    print_info "Updating system..."
+    pacman -Syu --noconfirm
+
+    # Safe orphan removal
+    print_info "Checking for orphaned packages..."
+    orphans=$(pacman -Qdtq || true)
+    if [[ -n "$orphans" ]]; then
+        print_info "Removing orphans: $orphans"
+        pacman -Rns $orphans --noconfirm
+    else
+        print_info "No orphaned packages found."
+    fi
+
+    # Base packages
+    BASE_PACKAGES=(
+        xorg-xrandr arandr brightnessctl base-devel pavucontrol gvfs thunar xclip
+        git bat fzf emacs gcc-fortran python-pip alacritty texlive-most htop
+        blueman bluez bluez-utils cmake meson feh os-prober grub man-db
+        xdg-user-dirs
+    )
+
+    print_info "Installing base packages..."
+    pacman -S --noconfirm "${BASE_PACKAGES[@]}"
+
+    # Enable Bluetooth
+    print_info "Enabling Bluetooth service..."
+    systemctl enable --now bluetooth
+
+    # Create user directories
+    print_info "Setting up XDG user directories..."
+    sudo -u "$SUDO_USER" xdg-user-dirs-update
+
+    print_info "Setup complete. Log saved to $LOGFILE"
+}
+
+main
+

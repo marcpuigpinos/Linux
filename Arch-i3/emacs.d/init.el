@@ -11,16 +11,6 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Install eglot if it's not already installed
-(unless (package-installed-p 'eglot)
-  (package-install 'eglot))
-
-;; Install eldoc if it's not already installed
-(unless (package-installed-p 'eldoc)
-  (package-install 'eldoc))
-(unless (package-installed-p 'eldoc-box)
-  (package-install 'eldoc-box))
-
 ;; Install gruber-darker if it is not already installed
 (unless (package-installed-p 'gruber-darker-theme)
   (package-install 'gruber-darker-theme))
@@ -29,19 +19,7 @@
 (unless (package-installed-p 'multiple-cursors)
   (package-install 'multiple-cursors))
 
-;; Install corfu for suggestions and autocompletion
-(unless (package-installed-p 'corfu)
-  (package-install 'corfu))
-(use-package corfu
-  :ensure t
-  :custom
-  (corfu-cycle t)                ;; Enable cycling for `tab`
-  (corfu-auto t)                 ;; Enable auto completion
-  (corfu-auto-delay 0.2)         ;; Delay before suggestions
-  (corfu-auto-prefix 1)          ;; Start completing after 1 character
-  :init
-  (global-corfu-mode))
-
+;; Startup message, menu and so
 (setq inhibit-startup-message t)
 ;(menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -63,15 +41,6 @@
 (setq auto-save-default nil)  ;; Disable auto-save files
 (require 'multiple-cursors)
 
-;; ElDoc
-(global-eldoc-mode 1) ;; Activate eldoc mode
-;; Require and enable eldoc-box
-(require 'eldoc-box)
-(eldoc-box-hover-mode 1) ;; Activate eldoc hover mode
-;; Optionally enable eldoc-box in all programming modes
-(add-hook 'prog-mode-hook #'eldoc-box-hover-mode)
-(global-set-key (kbd "C-S-d") 'eldoc-print-current-symbol-info) ;; Set ctrl + shift + D to print current symbol information
-
 ;; Add paths to exed-path.
 (add-to-list 'exec-path (expand-file-name "~/.local/bin")) ;; Path of pip installations
 
@@ -81,17 +50,7 @@
   :config
   (exec-path-from-shell-initialize))
 
-;; LSP ----
 ;; C
-(add-hook 'c-mode-hook 'eglot-ensure) ;; Ensure eglot is open
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(c-mode . ("clangd" "--completion-style=detailed"
-                           "--fallback-style=LLVM"
-                           "--clang-tidy"
-                           "--header-insertion=never"
-                           "--enable-config"))))
-
 ;; Ensure 4-space indentation for C/C++ files
 (add-hook 'c-mode-common-hook
           (lambda ()
@@ -100,15 +59,6 @@
                   indent-tabs-mode nil)))   ;; Use spaces, not tabs
 
 ;; C++
-(add-hook 'c++-mode-hook 'eglot-ensure) ;; Ensure eglot is open
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(c++-mode . ("clangd" "--completion-style=detailed"
-                           "--fallback-style=LLVM"
-                           "--clang-tidy"
-                           "--header-insertion=never"
-                           "--enable-config"))))
-
 ;; Ensure 4-space indentation for C/C++ files
 (add-hook 'c++-mode-common-hook
           (lambda ()
@@ -118,14 +68,6 @@
 
 
 ;; Python
-;; Ensure eglot is loaded for Python
-(add-hook 'python-mode-hook 'eglot-ensure)
-
-;; Add pyright as the language server for Python
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(python-mode . ("pyright-langserver" "--stdio"))))
-
 ;; Ensure 4-space indentation for Python
 (add-hook 'python-mode-hook
           (lambda ()
@@ -135,44 +77,13 @@
 
 
 ;; Fortran
-(add-hook 'f90-mode-hook 'eglot-ensure) ;; Ensure eglot is started in Fortran files
-
-;; Add fortls to eglot server programs
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               '(f90-mode . ("~/.local/bin/fortls" 
-                                 "--hover_signature"
-                                 "--use_signature_help"
-                                 "--autocomplete_no_prefix"
-                                 "--enable_code_actions"))))
-
-
+;; Ensure 4-space indentation for Fortran files
 (add-hook 'f90-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil   ;; Use spaces, not tabs
                   tab-width 4            ;; Tab width = 4 spaces
                   f90-indent 4)))        ;; Indent 4 spaces per level
 
-
-(defun my/fortran-format-buffer-with-fprettify ()
-  "Format the current buffer with fprettify if it's a Fortran file."
-  (when (and (eq major-mode 'f90-mode)
-             (executable-find "fprettify"))
-    (let ((current-point (point)))
-      (call-process-region (point-min) (point-max)
-                           "fprettify" t (current-buffer) t)
-      (goto-char current-point))))
-
-(add-hook 'f90-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook #'my/fortran-format-buffer-with-fprettify nil t)))
-
-
-;; Automatically format the buffer before saving if eglot is active
-(add-hook 'before-save-hook #'eglot-format-buffer)
-
-;; Set eglot to shutdown automatically
-(setq eglot-autoshutdown t)
 
 ;; kEY BINDINGS ----
 (global-set-key (kbd "C-M-c") 'mc/edit-lines)

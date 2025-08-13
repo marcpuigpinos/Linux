@@ -1,6 +1,0 @@
-# .clang-format
-BasedOnStyle: LLVM      # Start from LLVM style
-IndentWidth: 4          # Use 4 spaces for indentation
-TabWidth: 4             # Set tab width to 4 spaces (if you use tabs)
-UseTab: Never           # Use spaces, not tabs
-ColumnLimit: 80        # Optional: Set a column limit (can be adjusted)
