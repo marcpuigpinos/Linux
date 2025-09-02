@@ -112,7 +112,9 @@
           (lambda ()
             (setq c-basic-offset 4          ;; Set indentation to 4 spaces
                   tab-width 4               ;; Set tab width to 4 spaces
-                  indent-tabs-mode nil)))   ;; Use spaces, not tabs
+                  indent-tabs-mode nil)     ;; Use spaces, not tabs
+            ;; Make Enter behave like Enter + Tab
+            (local-set-key (kbd "RET") (lambda () (interactive) (newline) (indent-for-tab-command)))))
 
 ;; C++
 ;; Ensure 4-space indentation for C/C++ files
@@ -120,7 +122,9 @@
           (lambda ()
             (setq c++-basic-offset 4          ;; Set indentation to 4 spaces
                   tab-width 4               ;; Set tab width to 4 spaces
-                  indent-tabs-mode nil)))   ;; Use spaces, not tabs
+                  indent-tabs-mode nil)     ;; Use spaces, not tabs
+            ;; Make Enter behave like Enter + Tab
+            (local-set-key (kbd "RET") (lambda () (interactive) (newline) (indent-for-tab-command)))))
 
 ;; LSP para C/C++
 (use-package lsp-mode
