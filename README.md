@@ -100,6 +100,7 @@ All this programs can be installed during the installation process. They can als
 - fzf: fuzzy finder.
 - btop: top but beautiful.
 - feh: wallpaper.
+- flameshot: screenshots.
 - wget
 - texlive: latex.
 - exa: display icons when doing *ls*.
@@ -125,7 +126,7 @@ sudo pacman -S name-of-the-program
 Example of a base installation:
 
 ```bash
-sudo pacman -S emacs vim alacritty git python-pip base-devel gcc-fortran cmake meson unzip 7zip arandr man-db xdg-user-dirs blueman bluez bluez-utils pavucontrol thunar xclip bat fzf btop feh exa wget xorg-xrandr
+sudo pacman -S emacs vim alacritty git python-pip base-devel gcc-fortran cmake meson unzip 7zip arandr man-db xdg-user-dirs blueman bluez bluez-utils pavucontrol thunar xclip bat fzf btop feh exa wget xorg-xrandr flameshot
 ```
 
 Enable bluetooth:
