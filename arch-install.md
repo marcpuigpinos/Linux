@@ -1,7 +1,5 @@
 # Setting up Arch Linux and i3wm
 
-[TOC]
-
 ## Install Arch Linux
 
 The full guide of how to install Arch Linux can be found in <a href="https://wiki.archlinux.org/title/Installation_guide"> Arch wiki</a>.
