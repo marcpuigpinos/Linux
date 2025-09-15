@@ -83,6 +83,7 @@ All this programs can be installed during the installation process. They can als
 - meson: build tool.
 - unzip
 - 7zip
+- xorg-xrandr: manage displays
 - arandr: xrandr frontend.
 - man-db: install manpages.
 - xdg-user-dirs: install default user dirs of the system.
@@ -99,6 +100,7 @@ All this programs can be installed during the installation process. They can als
 - fzf: fuzzy finder.
 - btop: top but beautiful.
 - feh: wallpaper.
+- wget
 - texlive: latex.
 - exa: display icons when doing *ls*.
 - os-prober: needed to configure grub and detect other systems if not detected by default.
@@ -123,7 +125,7 @@ sudo pacman -S name-of-the-program
 Example of a base installation:
 
 ```bash
-sudo pacman -S emacs vim alacritty git python-pip base-devel gcc-fortran cmake meson unzip 7zip arandr man-db xdg-user-dirs blueman bluez bluez-utils pavucontrol thunar xclip bat fzf btop feh exa
+sudo pacman -S emacs vim alacritty git python-pip base-devel gcc-fortran cmake meson unzip 7zip arandr man-db xdg-user-dirs blueman bluez bluez-utils pavucontrol thunar xclip bat fzf btop feh exa wget xorg-xrandr
 ```
 
 Enable bluetooth:
