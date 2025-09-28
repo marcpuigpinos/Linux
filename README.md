@@ -100,6 +100,7 @@ All this programs can be installed during the installation process. They can als
 - fzf: fuzzy finder.
 - btop: top but beautiful.
 - feh: wallpaper.
+- picom: lightweight X11 compositor (graphic effects, vsync).
 - flameshot: screenshots.
 - wget
 - texlive: latex.
