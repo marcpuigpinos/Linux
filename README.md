@@ -126,7 +126,7 @@ sudo pacman -S name-of-the-program
 Example of a base installation:
 
 ```bash
-sudo pacman -S emacs vim alacritty git python-pip base-devel gcc-fortran cmake meson unzip 7zip arandr man-db xdg-user-dirs blueman bluez bluez-utils pavucontrol thunar xclip bat fzf btop feh exa wget xorg-xrandr flameshot
+sudo pacman -S emacs vim alacritty git python-pip base-devel gcc-fortran cmake meson unzip 7zip arandr man-db xdg-user-dirs blueman bluez bluez-utils pavucontrol thunar xclip bat fzf btop feh exa wget xorg-xrandr flameshot picom
 ```
 
 Enable bluetooth:
@@ -427,6 +427,35 @@ Copy the wallpapers to this folder. In my case I only have a wallpaper called *l
 
 To change the Wallpaper, we need only to go to the *i3wm* config file and search for the name of my wallpapers and change it. It is a *feh* command.
 
+### Picom
+
+Create the file to hold the configuration file for *Picom*:
+
+```bash
+mkdir .config/picom
+touch .config/picom/picom.conf
+```
+
+Edit *picom.conf* file and write the following:
+
+```yaml
+backend = "glx";  # Usa OpenGL para mejor rendimiento
+vsync = true;
+
+glx-no-stencil = true;
+glx-no-rebind-pixmap = true;
+use-damage = true;
+
+# Otras opciones útiles
+refresh-rate = 0;           # 0 = autodetect
+vsync-use-glfinish = false;
+unredir-if-possible = false;  # Importante para que vsync funcione bien
+
+# Transparencias (opcional)
+shadow = false;
+fading = false;
+```
+
 ### i3 config file
 
 Open the file *~/.config/i3/config* delete its contents and paste the following:
@@ -479,6 +508,9 @@ exec --no-startup-id blueman-applet
 
 # Wallpaper
 exec feh --bg-scale ~/.config/wallpapers/lake-mountains-rocks-sunrise-daylight-scenery-illustration-6016x6016-3773.jpg
+
+# Picom: copositor
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -644,7 +676,6 @@ bindsym $mod+c exec emacs
 bar {
         status_command i3status
 }
-
 ```
 
 ### i3status
@@ -734,7 +765,6 @@ disk "/" {
 disk "/home" {
         format = "%used/%total"
 }
-
 ```
 
 ### Reboot the system
