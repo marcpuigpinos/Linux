@@ -23,6 +23,22 @@
 (prefer-coding-system 'utf-8)         ;; Asegurarse de usar UTF-8 para caracteres especiales
 (setq locale-coding-system 'utf-8)
 
+;; 2.5. Copilot
+;; ==============================
+;; 🚀 GitHub Copilot Setup
+;; ==============================
+(use-package copilot
+  :ensure t
+  :load-path "~/.emacs.d/copilot"  ;; only if you cloned manually (see below)
+  :hook (prog-mode . copilot-mode)
+  :config
+  ;; Keybindings
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+  (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
+
+
 ;; 3. Copiar pegar tradicional
 (cua-mode t)
 
