@@ -769,6 +769,27 @@ disk "/home" {
 }
 ```
 
+### Emacs
+
+#### Copilot
+
+Download the Emacs plugin:
+```
+git clone https://github.com/copilot-emacs/copilot.el ~/.emacs.d/copilot
+```
+
+Download and install copilot cli.
+```
+npm -g --prefix ~/.emacs.d/.cache/copilot install @github/copilot-language-server
+```
+
+Open emacs and run:
+```
+M-x copilot-install-server
+M-x copilot-login
+```
+
+
 ### Reboot the system
 
 ```bash
