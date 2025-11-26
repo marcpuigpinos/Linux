@@ -95,7 +95,10 @@ All this programs can be installed during the installation process. They can als
 - brightnessctl : for laptop.
 - pavucontrol: volume control.
 - thunar: file manager.
+- smbclient: samba client.
+- cifs-utils: needed for open samba shares on thunar.
 - gvfs: virtual filesystem suport (needed for mounting via Thunar).
+- gvfs-smb: Support for samba share.
 - xclip: clipboard.
 - bat: cat but beautiful.
 - fzf: fuzzy finder.
@@ -128,7 +131,7 @@ sudo pacman -S name-of-the-program
 Example of a base installation:
 
 ```bash
-sudo pacman -S emacs vim alacritty git python-pip base-devel gcc-fortran cmake meson unzip 7zip arandr man-db xdg-user-dirs blueman bluez bluez-utils pavucontrol thunar gvfs xclip bat fzf btop feh exa wget xorg-xrandr flameshot picom
+sudo pacman -S emacs vim alacritty git python-pip base-devel gcc-fortran cmake meson unzip 7zip arandr man-db xdg-user-dirs blueman bluez bluez-utils pavucontrol thunar smbclient cifs-utils gvfs gvfs-smb xclip bat fzf btop feh exa wget xorg-xrandr flameshot picom
 ```
 
 Enable bluetooth:
